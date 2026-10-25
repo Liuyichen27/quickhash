@@ -6,7 +6,7 @@ import argparse
 import sys
 from pathlib import Path
 
-from . import __version__, core
+from . import __version__, _update, core
 
 _PROGRESS_THRESHOLD = 128 * 1024 * 1024  # 超过 128 MB 才显示进度，免得刷屏
 

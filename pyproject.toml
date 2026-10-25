@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "quickhash"
-version = "1.0.0"
+version = "1.1.0"
 description = "算文件哈希、生成和校验校验文件，格式兼容 sha256sum"
 readme = "README.md"
 requires-python = ">=3.8"

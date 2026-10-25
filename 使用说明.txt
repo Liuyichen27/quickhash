@@ -1,0 +1,38 @@
+==================================================
+ quickhash · 使用说明
+==================================================
+
+【这是什么】
+quickhash —— 算文件哈希、生成和校验校验文件。格式与 coreutils sha256sum 完全一致。
+纯标准库，1 MB 流式读取，算 50 GB 镜像内存只占几 MB。
+
+【怎么装】
+需要 Python 3.8 或更高版本。把压缩包解压，在解压出来的文件夹里执行：
+
+    python -m pip install .
+
+装好后任何目录下都能用 `quickhash` 命令。
+不想装也能直接跑：python -m quickhash.cli …（在解压目录里）
+
+【怎么用】
+    quickhash 镜像.iso
+    quickhash ./下载目录 -r --save SHA256SUMS
+    quickhash -c SHA256SUMS
+    quickhash --check SHA256SUMS   # 长参数写法
+
+【常用参数】
+    -a, --algo sha256    md5 / sha1 / sha256 / sha512（也可按长度自动推断）
+    -r, --recursive      递归子目录（自动跳过 .git、node_modules）
+    -s, --save FILE      把结果写成校验文件
+    -c, --check FILE     按校验文件逐个比对
+    -q, --quiet          只输出哈希值本身，方便管道
+
+【它的边界】
+不认识新算法；校验文件里写的是相对路径，换目录后要回到同一层再验。
+
+【怎么确认是新版】
+每次运行会在后台看一眼 GitHub，有新版本会打一行提示（查不到就安静跳过）。
+不想让它查，设环境变量 QUICKHASH_NO_UPDATE=1 即可关闭。
+
+项目主页：https://github.com/Liuyichen27/quickhash
+只有源码包没有安装包，装不动就提 issue。
